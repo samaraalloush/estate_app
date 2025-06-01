@@ -25,20 +25,24 @@ class PropertyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double height = isBig ? 280 : 200;
-    final double width = double.infinity;
-
+    final double width = isBig ? 300 : 240;
     return InkWell(
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => PropertyDetailsPage(
+            builder:
+                (context) => PropertyDetailsPage(
               title: title,
               description: description,
               imageUrl: imageUrl,
               location: location,
               price: price,
               isNetwork: true,
+              area: 100,
+              bathrooms: 4,
+              bedrooms: 4,
+              rating: 4.5,
             ),
           ),
         );
@@ -61,9 +65,11 @@ class PropertyCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
-              borderRadius:
-              const BorderRadius.vertical(top: Radius.circular(20)),
-              child: isNetwork
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(20),
+              ),
+              child:
+              isNetwork
                   ? Image.network(
                 imageUrl,
                 height: isBig ? 180 : 120,
@@ -88,13 +94,12 @@ class PropertyCard extends StatelessWidget {
               ),
             ),
             Padding(
-              padding:
-              const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
               child: Text(
                 location,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Colors.grey[600],
-                ),
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyMedium?.copyWith(color: Colors.grey[600]),
               ),
             ),
           ],
@@ -103,3 +108,5 @@ class PropertyCard extends StatelessWidget {
     );
   }
 }
+
+

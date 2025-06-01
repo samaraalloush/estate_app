@@ -47,9 +47,9 @@ class _SearchResultsPageState extends State<SearchResultsPage> {
       final title = property['title'].toString().toLowerCase();
       final location = property['subtitle'].toString().toLowerCase();
 
-      final matchesQuery = query.isEmpty ;
-      title.contains(query) ;
-      location.contains(query);
+      final matchesQuery = query.isEmpty ||
+          title.contains(query) ||
+          location.contains(query);
       final matchesLocation = selectedLocation == 'All' || location == selectedLocation.toLowerCase();
 
       final priceValue = double.tryParse(
