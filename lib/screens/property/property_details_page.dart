@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:estate2/constant/colors.dart';
 import 'package:estate2/components/gap.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:estate2/screens/ContactSellerScreen/contact_seller_screen.dart';
 
 class PropertyDetailsPage extends StatelessWidget {
   final String title;
@@ -14,6 +15,9 @@ class PropertyDetailsPage extends StatelessWidget {
   final int bathrooms;
   final double rating;
   final bool isNetwork;
+  final String sallerName;
+  final String sallerPhone;
+
 
   const PropertyDetailsPage({
     Key? key,
@@ -25,6 +29,8 @@ class PropertyDetailsPage extends StatelessWidget {
     required this.area,
     required this.bedrooms,
     required this.bathrooms,
+    required this.sallerName,
+    required this.sallerPhone,
     this.rating = 4.5,
     this.isNetwork = false,
   }) : super(key: key);
@@ -166,9 +172,19 @@ class PropertyDetailsPage extends StatelessWidget {
                           vertical: 14,
                         ),
                       ),
-                      onPressed: () {
-                        // Start chat or call
-                      },
+                   onPressed: () {
+                     Navigator.push(
+                       context,
+                        MaterialPageRoute(
+                       builder: (context) => ContactSellerScreen(
+                      sellerName: "اسم البائع",
+
+                      propertyTitle: title,
+                      ),
+                       ),
+                          );
+                          },
+
                       child: Text(
                         "Contact Seller",
                         style: Theme.of(context).textTheme.bodyLarge!.copyWith(

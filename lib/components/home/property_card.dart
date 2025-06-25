@@ -11,6 +11,7 @@ class PropertyCard extends StatelessWidget {
   final bool isBig;
   final bool isNetwork;
 
+
   const PropertyCard({
     Key? key,
     required this.title,
@@ -20,6 +21,7 @@ class PropertyCard extends StatelessWidget {
     required this.description,
     required this.isBig,
     required this.isNetwork,
+
   }) : super(key: key);
 
   @override
@@ -38,6 +40,8 @@ class PropertyCard extends StatelessWidget {
               imageUrl: imageUrl,
               location: location,
               price: price,
+              sallerName: "Ahmed" ,
+              sallerPhone: "098755433",
               isNetwork: true,
               area: 100,
               bathrooms: 4,
