@@ -12,6 +12,14 @@ class PropertyCard extends StatelessWidget {
   final bool isNetwork;
 
 
+  final double area;
+  final int bedrooms;
+  final int bathrooms;
+  final double rating;
+  final String sallerName;
+  final String sallerPhone;
+
+
   const PropertyCard({
     Key? key,
     required this.title,
@@ -22,31 +30,38 @@ class PropertyCard extends StatelessWidget {
     required this.isBig,
     required this.isNetwork,
 
+    this.area = 100,
+    this.bedrooms = 3,
+    this.bathrooms = 2,
+    this.rating = 4.5,
+    this.sallerName = "Ahmed",
+    this.sallerPhone = "098755433",
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final double height = isBig ? 280 : 200;
     final double width = isBig ? 300 : 240;
+
     return InkWell(
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder:
-                (context) => PropertyDetailsPage(
+            builder: (context) => PropertyDetailsPage(
               title: title,
               description: description,
               imageUrl: imageUrl,
               location: location,
               price: price,
-              sallerName: "Ahmed" ,
-              sallerPhone: "098755433",
-              isNetwork: true,
-              area: 100,
-              bathrooms: 4,
-              bedrooms: 4,
-              rating: 4.5,
+              isNetwork: isNetwork,
+              area: area,
+              bedrooms: bedrooms,
+              bathrooms: bathrooms,
+              rating: rating,
+              sallerName: sallerName,
+              sallerPhone: sallerPhone,
+              propertyType: "rent or sale",
             ),
           ),
         );
@@ -72,8 +87,7 @@ class PropertyCard extends StatelessWidget {
               borderRadius: const BorderRadius.vertical(
                 top: Radius.circular(20),
               ),
-              child:
-              isNetwork
+              child: isNetwork
                   ? Image.network(
                 imageUrl,
                 height: isBig ? 180 : 120,
@@ -101,9 +115,9 @@ class PropertyCard extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
               child: Text(
                 location,
-                style: Theme.of(
-                  context,
-                ).textTheme.bodyMedium?.copyWith(color: Colors.grey[600]),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Colors.grey[600],
+                ),
               ),
             ),
           ],
@@ -112,5 +126,3 @@ class PropertyCard extends StatelessWidget {
     );
   }
 }
-
-
